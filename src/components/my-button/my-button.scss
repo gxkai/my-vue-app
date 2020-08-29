@@ -1,0 +1,21 @@
+button {
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  background-color: var(--bg-black);
+  cursor: pointer;
+  color: var(--text-white);
+  &:disabled {
+    background-color: rgba(#111111, 0.1);
+  }
+}
+.button--medium {
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 3px 10px;
+}
+.button--small {
+  border-radius: 3px * 0.8;
+  font-size: 15px * 0.8;
+  padding: 3px * 0.8 10px * 0.8;
+}
