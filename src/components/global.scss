@@ -3,3 +3,10 @@
   --text-black: #111111;
   --text-white: #ffffff;
 }
+$namespace: 'my-';
+@mixin ns($cls){
+  $NS: $namespace+$cls;
+  .#{$NS}{
+    @content;
+  }
+}

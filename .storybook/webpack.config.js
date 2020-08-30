@@ -1,6 +1,11 @@
 const vueConfig = require('@vue/cli-service/webpack.config.js');
 
 module.exports = async ({ config }) => {
+  config.module.rules.push({
+    test: /\.vue$/,
+    loader: 'vue-docgen-loader',
+    enforce: 'post'
+  })
   return {
     ...config,
     resolve: {
@@ -12,7 +17,7 @@ module.exports = async ({ config }) => {
     },
     module: {
       ...vueConfig.module,
-      rules: vueConfig.module.rules,
+      rules: [...vueConfig.module.rules],
     },
   }
 }

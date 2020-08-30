@@ -1,0 +1,8 @@
+@include ns(my-image) {
+  h4 + canvas {
+    cursor: crosshair;
+  }
+  canvas {
+    background: url('./tt-bg.gif');
+  }
+}

@@ -1,6 +1,11 @@
-import {configure} from '@storybook/vue'
-import '../src/main'
+import {addDecorator, configure} from '@storybook/vue'
+import './global.scss'
+import '../src/share'
 import {addParameters} from "@storybook/vue";
+import { themes, create } from '@storybook/theming';
+// https://github.com/pocka/storybook-addon-vue-info
+import { withInfo } from 'storybook-addon-vue-info'
+addDecorator(withInfo)
 addParameters({
   //配置背景色选项
   backgrounds: [{
@@ -42,11 +47,17 @@ addParameters({
         },
       }
     },
-    defaultViewport: 'PC',
+    defaultViewport: '',
+  },
+  assets: ['https://via.placeholder.com/300/09f/fff.png'],
+  options: {
+    showPanel: true,
+        panelPosition: 'right',
+        theme: themes.light,
   }
 });
 function loadStories () {
-  const req = require.context('../src/components', true, /\.stories\.ts$/)
+  const req = require.context('../src/components', true, /\.stories\.(t|j)s$/)
   req.keys().forEach((filename)=>req(filename))
 }
 

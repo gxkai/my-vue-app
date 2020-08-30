@@ -7,10 +7,15 @@ import {
   withKnobs
 } from "@storybook/addon-knobs";
 import { storiesOf } from "@storybook/vue";
+import MyButton from "@/components/my-button/MyButton.vue";
 storiesOf("MyButton", module)
   .addDecorator(withKnobs)
-  .add("BasicUsage", () => {
-    return {
+  .add(
+    "BasicUsage",
+    () => ({
+      components: {
+        MyButton: MyButton
+      },
       props: {
         text: {
           default: text("text", "Hello Storybook")
@@ -25,6 +30,22 @@ storiesOf("MyButton", module)
       template: `<my-button  @click="action" :disabled="disabled" :size="size">{{ text }}</my-button>`,
       methods: {
         action: action("clicked")
+      },
+      description: {
+        MyButton: {
+          props: {
+            size: "尺寸"
+          }
+        }
       }
-    };
-  });
+    }),
+    {
+      info: {
+        summary: "",
+        useDocgen: true,
+        docsInPanel: true,
+        header: true,
+        source: true
+      }
+    }
+  );

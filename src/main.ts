@@ -3,9 +3,7 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
-import "normalize.css";
-import components from "@/components";
-Vue.use(components);
+import "./share.ts";
 Vue.config.productionTip = false;
 
 new Vue({

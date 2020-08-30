@@ -1,16 +1,16 @@
 <template>
-  <div>
+  <div :class="`${prefix}-{{dashCase fileName}}`">
     {{dashCase fileName}}
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { Prop, Component } from "vue-property-decorator";
+import {Prop, Component, Mixins} from "vue-property-decorator";
+import GlobalMixin from "@/components/mixins/global.mixin";
 @Component({
   name: `{{dashCase fileName}}`
 })
-export default class MyButton extends Vue {}
+export default class {{properCase fileName}} extends Mixins(GlobalMixin) {}
 </script>
 
 <style lang="scss">

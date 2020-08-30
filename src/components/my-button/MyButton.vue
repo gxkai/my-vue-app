@@ -1,20 +1,29 @@
 <template>
-  <button @click="onClick" :attr="$attrs" :class="clazz">
+  <button
+    @click="onClick"
+    :attr="$attrs"
+    :class="[clazz, `${prefix}-my-button`]"
+  >
     <slot />
   </button>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import { Prop, Component } from "vue-property-decorator";
+import { Prop, Component, Mixins } from "vue-property-decorator";
+import GlobalMixin from "@/components/mixins/global.mixin";
 @Component
-export default class MyButton extends Vue {
-  @Prop() size!: "small" | "medium" | "large";
+export default class MyButton extends Mixins(GlobalMixin) {
+  @Prop({
+    type: String,
+    default: "medium"
+  })
+  size!: "small" | "medium" | "large";
   onClick() {
     this.$emit("click", "111");
   }
   get clazz() {
-    return `button--${this.size}`;
+    return `${this.prefix}-my-button--${this.size}`;
   }
 }
 </script>
